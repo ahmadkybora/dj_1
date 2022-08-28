@@ -1,4 +1,12 @@
-salam
+<!-- salam
 <p>{{user}}</p>
 <p>{{age}}</p>
-<p>{{job}}</p>
+<p>{{job}}</p> -->
+{% for article in articles %}
+<article>
+    <img src="{{article.thumbnail.url}}" alt="{{article.title}}" width="600" height="400">
+    <h1><a>{{article.slug}}</a>{{article.title}}</h1>
+    <small>{{article.published}}</small>
+    <p>{{article.description}}</p>
+</article>
+{% endfor %}
