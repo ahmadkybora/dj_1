@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, JsonResponse, Http404
 
 from .models import Article
 
@@ -55,3 +55,18 @@ def api(request):
         },
     }
     return JsonResponse(data)
+
+def detail(request, slug):
+    # try:
+    #     article = Article.objects.get(slug=slug)
+    # except Exception as e:
+    #     raise Http404
+    # context = {
+    #     # "articles": Article.objects.all() 
+    #     "articles": Article.objects.get(slug=slug) 
+    # }
+    context = {
+        # "articles": Article.objects.all() 
+        "articles": get_object_or_404(Article, slug=slug, status="p") 
+    }
+    return render(request, "blog/detail.html", context)

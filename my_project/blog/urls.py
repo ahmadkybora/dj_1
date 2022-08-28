@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import home, api
+from .views import home, api, detail
 
 app_name = "blog"
 urlpatterns = [
     path('', home, name="home"),
+    path('article/<slug:slug>', detail, name="detail"),
     path('api/', api, name="api")
 ]
 
