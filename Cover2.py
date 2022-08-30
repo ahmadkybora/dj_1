@@ -20,6 +20,7 @@ from datetime import datetime
 #######################
 import psutil
 import music_tag
+# from orator import Model
 from persiantools import digits
 from telegram.error import TelegramError
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters, \
@@ -29,6 +30,24 @@ from telegram import (
     InlineKeyboardButton, 
     ReplyKeyboardMarkup, 
 )
+# from telegram import Update, ReplyKeyboardMarkup, ChatAction, ParseMode, ReplyKeyboardRemove
+# from telegram.ext import Updater, CommandHandler, CallbackContext, Filters, MessageHandler, \
+#     Defaults, PicklePersistence
+# from telegram.ext import Updater, CommandHandler, CallbackContext, Filters, MessageHandler, \
+#     Defaults, PicklePersistence
+
+# import telegram
+# from telegram import InlineKeyboardButton
+# from telegram import InlineKeyboardMarkup
+# from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, \
+# ConversationHandler, CallbackQueryHandler
+
+# from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters, ConversationHandler, ContextTypes
+# from telegram import Update
+# from telegram import (
+#     InlineKeyboardButton, 
+#     ReplyKeyboardMarkup, 
+# )
 
 ##############
 # My modules #
@@ -41,11 +60,18 @@ from utils import download_file, create_user_directory, convert_seconds_to_human
     generate_module_selector_keyboard, generate_tag_editor_keyboard, save_tags_to_file, \
     parse_cutting_range, pretty_print_size, get_dir_size_in_bytes
 
+# from models.admin import Admin
+# from models.user import User
 from my_project.blog.models import Admin, User 
+# from dbconfig import db
+
+# Model.set_connection_resolver(db)
+
 
 ####################
 # Global variables #
 ####################
+# BOT_TOKEN = os.getenv("BOT_TOKEN")
 BOT_TOKEN = "378545358:AAHuQjkYspm0CYr-ZG9xF_h31CB7V-pF118"
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 
@@ -58,8 +84,11 @@ now = re.sub(':', '_', str(now))
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+# output_file_handler = logging.FileHandler(f"logs/{now}.log", encoding='UTF-8')
+# output_file_handler = logging.FileHandler(f"logs/now.log", encoding='UTF-8')
 stdout_handler = logging.StreamHandler(sys.stdout)
 
+# logger.addHandler(output_file_handler)
 logger.addHandler(stdout_handler)
 
 

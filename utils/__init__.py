@@ -6,9 +6,10 @@ import music_tag
 from telegram import ReplyKeyboardMarkup
 from telegram.ext import CallbackContext
 
-from models.admin import Admin
-from models.user import User
-from utils.lang import keys
+# from models.admin import Admin
+# from models.user import User
+from my_project.blog.models import Admin, User 
+from localization.lang import keys
 
 
 def translate_key_to(key: str, destination_lang: str) -> str:
