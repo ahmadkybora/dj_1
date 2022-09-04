@@ -2,6 +2,10 @@ from platform import version
 from django.db import models
 from django.utils import timezone
 
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
+
 class Category(models.Model):
     title = models.CharField(max_length=200, verbose_name="انواع دسته بندی")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مقاله")
@@ -35,6 +39,8 @@ class Article(models.Model):
         verbose_name_plural = "مقالات" 
     def __str__(self):
         return self.title
+
+    objects = ArticleManager
 class User():
     pass
 
