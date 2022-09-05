@@ -4,7 +4,7 @@ from .models import Article, Category
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('position', 'title', 'slug', 'status')
+    list_display = ('position', 'title', 'slug', 'parent', 'status')
     list_fiter = (['status'])
     search_filter = ('title', 'description')
     prepopulated_fields = {'slug': ('title')}
